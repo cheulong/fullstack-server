@@ -1,7 +1,8 @@
 # Fullstack-server
 
-### Step1 Ansible
-Config Server
+## Step 1: Ansible
+### Config Server
+
 
 In this scenario, we have:
 - 3 servers to host front-end
@@ -18,4 +19,8 @@ In this scenario, we have:
     - db-server-03
 
 This step is to setup and install dependencies to each server via ansible.
+Key to take away from this step:
+- understand ansible folder structure
+- be able to config servers according to tags (web, backend, db, dev, staging, prod)
+
 
