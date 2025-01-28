@@ -5,7 +5,9 @@
 
 
 In this scenario, we have:
+
 - 3 worker-nodes to host our k8s cluster for fullstack web service
+
     - worker-node-01 
     - worker-node-02 
     - worker-node-03
@@ -13,6 +15,7 @@ In this scenario, we have:
 This step is to setup and install dependencies to each server via ansible.
 Key to take away from this step:
 - understand ansible folder structure
+
 - be able to config servers according to tags (worker-node, worker-node-01)
 
 Task1: create ssh key in master node
@@ -65,3 +68,5 @@ test it
 ```
 ansible all -m ping
 ```
+
+
