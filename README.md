@@ -46,3 +46,22 @@ test it
 ```
 ssh worker01
 ```
+Task3: install ansible in master node
+```
+sudo apt update && sudo apt install ansible
+```
+init the connection between master to worker
+```
+ansible all --keyfile ~/.ssh/k8s_key -i inventory -m ping -u cheulong
+```
+(optional) create default value with ansible.cfg
+```
+[defaults]
+inventory = inventory
+private_key_file = ~/.ssh/k8s_key
+remote_user=cheulong
+```
+test it
+```
+ansible all -m ping
+```
