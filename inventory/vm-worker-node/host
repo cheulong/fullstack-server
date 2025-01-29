@@ -1,0 +1,9 @@
+[worker_01]
+192.168.230.10 fileName=a
+
+[worker_02]
+192.168.230.69 fileName=b
+
+[worker_03]
+192.168.230.66 fileName=c
+
