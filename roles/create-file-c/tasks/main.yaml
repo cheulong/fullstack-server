@@ -1,0 +1,6 @@
+---
+
+- name: Create c.txt
+  command: "touch c.txt"
+  notify:
+    - Print message

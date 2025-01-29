@@ -1,0 +1,4 @@
+---
+
+- name: Create file.txt
+  command: "touch first.txt"

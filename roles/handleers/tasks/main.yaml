@@ -1,0 +1,4 @@
+---
+
+- name: Print message
+  command: "echo All done"

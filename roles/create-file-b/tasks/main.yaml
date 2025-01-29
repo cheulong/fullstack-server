@@ -1,0 +1,4 @@
+---
+
+- name: Create b.txt
+  command: "touch b.txt"
