@@ -6,17 +6,32 @@
 
 - hosts: worker_01
   roles:
-  - create-file-a
+  - create-a-file
+
+  handlers:
+  - name: Print message
+    debug:
+      msg: "All done"
+    when: fileName == "c"
 
 - hosts: worker_02
   roles:
-  - create-file-b
+  - create-a-file
+
+  handlers:
+  - name: Print message
+    debug:
+      msg: "All done"
+    when: fileName == "c"
 
 - hosts: worker_03
   roles:
-  - create-file-c
+  - create-a-file
 
   handlers:
-    - name: Print message
-      debug:
-        msg: "All done"
+  - name: Print message
+    debug:
+      msg: "All done"
+    when: fileName == "c"
+
+
