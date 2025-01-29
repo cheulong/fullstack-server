@@ -15,7 +15,6 @@ In this scenario, we have:
 This step is to setup and install dependencies to each server via ansible.
 Key to take away from this step:
 - understand ansible folder structure
-
 - be able to config servers according to tags (worker-node, worker-node-01)
 
 Task1: create ssh key in master node
@@ -55,7 +54,7 @@ sudo apt update && sudo apt install ansible
 ```
 init the connection between master to worker
 ```
-ansible all --keyfile ~/.ssh/k8s_key -i inventory -m ping -u cheulong
+ansible all --key-file ~/.ssh/k8s_key -i inventory -m ping -u cheulong
 ```
 (optional) create default value with ansible.cfg
 ```
@@ -69,4 +68,34 @@ test it
 ansible all -m ping
 ```
 
+Task4: create ansible playbook
+``` 
+create-file-playbook.yaml
+---
+
+- hosts: all
+  tasks:
+  - name: Create file.txt
+    command: "touch file.txt"
+
+- hosts: worker_01
+  tasks:
+  - name: Create a.txt
+    command: "touch a.txt"
+
+- hosts: worker_02
+  tasks:
+  - name: Create b.txt
+    command: "touch b.txt"
+
+- hosts: worker_03
+  tasks:
+  - name: Create c.txt
+    command: "touch c.txt"
+
+```
+run it
+```
+ansible-playbook create-file-playbook.yaml
+```
 
