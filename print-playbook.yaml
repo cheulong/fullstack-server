@@ -1,9 +1,12 @@
 ---
 
 - hosts: all
-  
+  gather_facts: yes
+  vars:
+    user_name: "{{ inventory_hostname }}"
   tasks:
-    - debug:
-        msg: "{{ lookup('env', 'USER') }}"
-
+    - name: Create text file from Jinja2 template
+      template:
+        src: file_template.j2
+        dest: "./greeting.txt"
 
