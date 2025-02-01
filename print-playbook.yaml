@@ -1,9 +1,24 @@
 ---
 
 - hosts: all
+  gather_facts: yes
+  vars_files:
+      - secret.yaml
+  vars:
+    user_name: "{{ inventory_hostname }}"
+  tasks:
+    - name: Create text file from Jinja2 template
+      template:
+        src: file_template.j2
+        dest: "./greeting.txt"
+    
+    - debug:
+        msg: "Secret name is {{ name }}"
+
   
   tasks:
     - debug:
         msg: "{{ lookup('env', 'USER') }}"
+
 
 
