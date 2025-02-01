@@ -13,10 +13,8 @@
         dest: "./greeting.txt"
     
     - debug:
-        msg: "Secret name is {{ name }}"
-
+        msg: "Secret name is {{ var_name }}"
   
-  tasks:
     - debug:
         msg: "{{ lookup('env', 'USER') }}"
 
