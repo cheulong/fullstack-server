@@ -14,3 +14,11 @@
     
     - debug:
         msg: "Secret name is {{ name }}"
+
+  
+  tasks:
+    - debug:
+        msg: "{{ lookup('env', 'USER') }}"
+
+
+
