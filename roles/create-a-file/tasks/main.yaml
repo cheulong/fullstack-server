@@ -1,6 +1,6 @@
 ---
 
-- name: Create {{ fileName }}.txt
-  command: "touch {{ fileName }}.txt"
+- name: Create {{ file_name }}.txt
+  command: "touch {{ file_name }}.txt"
   notify:
     - Print message
