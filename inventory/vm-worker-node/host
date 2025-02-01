@@ -1,9 +1,5 @@
-[worker_01]
-192.168.230.10 fileName=a
-
-[worker_02]
-192.168.230.69 fileName=b
-
-[worker_03]
-192.168.230.66 fileName=c
+[worker_nodes]
+worker_01 ansible_host=192.168.230.10 
+worker_02 ansible_host=192.168.230.69
+worker_03 ansible_host=192.168.230.66
 

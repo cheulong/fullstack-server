@@ -1,8 +1,14 @@
 ---
 
 - hosts: all
+  vars_files:
+    - my_vars.yaml
   roles:
   - create-file
+  tasks:
+    - debug:
+        msg: "{{ var_from_vars_file }}"
+      when: var_from_vars_file is defined
 
 - hosts: worker_01
   roles:
@@ -12,7 +18,7 @@
   - name: Print message
     debug:
       msg: "All done"
-    when: fileName == "c"
+    when: file_name == "c"
 
 - hosts: worker_02
   roles:
@@ -22,7 +28,7 @@
   - name: Print message
     debug:
       msg: "All done"
-    when: fileName == "c"
+    when: file_name == "c"
 
 - hosts: worker_03
   roles:
@@ -32,6 +38,6 @@
   - name: Print message
     debug:
       msg: "All done"
-    when: fileName == "c"
+    when: file_name == "c"
 
 
