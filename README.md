@@ -170,3 +170,14 @@ Add Worker Nodes
 ```
 sudo kubeadm join <master-ip>:6443 --token <token> --discovery-token-ca-cert-hash sha256:<hash>
 ```
+
+
+## Step 3: Dockerize a simple webapp
+### Create reactjs webapp with vite
+```
+git clone https://github.com/cheulong/fullstack-server.git
+cd app
+docker-compose up --build
+```
+docker tag 5735c4dbfcc3 task-list-app/frontend:version0.0.1 
+docker image push app-client:version0.0.1  
