@@ -181,3 +181,7 @@ docker-compose up --build
 ```
 docker tag 5735c4dbfcc3 task-list-app/frontend:version0.0.1 
 docker image push app-client:version0.0.1  
+
+- multi-stage build
+- volume
+- switch to least privilate user
