@@ -14,8 +14,9 @@ RUN npm run build
 
 # production stage
 FROM nginx:alpine
-RUN groupadd -r nodejs && useradd -g nodejs nodejs
-RUN chown -R nodejs:nodejs /app
-USER nodejs
+# RUN groupadd -r nodejs && useradd -g nodejs nodejs
+# RUN chown -R nodejs:nodejs /app
+# USER nodejs
+
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
