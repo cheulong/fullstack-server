@@ -162,6 +162,13 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
+Enable br_netfilter
+```
+ sudo nano /etc/sysctl.conf
+
+ br_netfilte > sudo nano /etc/modules-load.d/k8s.conf
+
+```
 Deploy a Pod Network
 ```
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
