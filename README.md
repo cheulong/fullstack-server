@@ -185,3 +185,65 @@ docker image push app-client:version0.0.1
 - multi-stage build
 - volume
 - switch to least privilate user
+
+
+## Step 4: Setup Jenkins
+### Setup server
+Installing Java
+
+sudo apt install fontconfig openjdk-17-jre
+
+Test Java by checking its version
+
+java -version
+
+Adding the key for the Jenkins repository
+
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+
+Add the Jenkins repository to your server
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+/etc/apt/sources.list.d/jenkins.list > /dev/null
+
+Install Jenkins
+
+sudo apt update
+
+sudo apt install jenkins
+
+Log in to web console at port 8080
+### Setup agent
+Install docker 
+
+```
+nano /lib/systemd/system/docker.service
+
+# paste this
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock
+```
+sudo systemctl daemon-reload
+
+sudo service docker restart
+
+curl http://localhost:4243/version
+
+**In host**
+
+curl http://{agent_ip}:4243/version
+
+Add Docker cloud agent
+
+manage jenkins > clouds > +new cloud
+
+docker cloud details
+
+Docker host uri
+
+tcp//{agent_ip}:4243
+
+docker agent templates
+
+docker image
+
+jenkins/agent:alpine-jdk21
