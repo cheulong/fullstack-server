@@ -19,10 +19,15 @@ services:
     depends_on:
       - mongo
   client:
+    env_file:
+    - staging.env
     build: 
       context: ./client
       # for local development
       # dockerfile: dev.Dockerfile
+      args:
+        MODE: staging
+        VITE_SECRET: ${VITE_SECRET}:-default
     volumes:
       - ./client:/app
       - /app/node_modules
