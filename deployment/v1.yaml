@@ -1,0 +1,53 @@
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: mywebapp
+  namespace: default
+  labels:
+    app: mywebapp
+    tier: frontend
+spec:
+  selector:
+    app: mywebapp
+    tier: frontend
+  type: LoadBalancer
+  ports:
+  - name: nginx
+    protocol: TCP
+    port: 8080
+    targetPort: 80
+    nodePort: 31010
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  namespace: default
+  labels:
+    app: mywebapp
+    tier: frontend
+spec:
+  selector:
+    matchLabels:
+      app: mywebapp
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mywebapp
+        tier: frontend
+    spec:
+      containers:
+      - name: myfrontendcontainer
+        image: cheulong/task-list-app:frontend-0.0.2
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: 116Mi
+            cpu: "1"
+          requests:
+            memory: 16Mi
+            cpu: "0.2"

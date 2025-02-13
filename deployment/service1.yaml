@@ -1,0 +1,14 @@
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector:
+    app: myapp
+  ports:
+  -  port: 8082
+     protocol: TCP
+     targetPort: 80

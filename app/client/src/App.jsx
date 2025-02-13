@@ -29,6 +29,8 @@ function App() {
   return (
     <>
       <h1>Tasks</h1>
+      <p>First name: {'default firstname'} </p>
+      <p>Last name: {'default lastname'}</p>
       <input type="text" value={task} onChange={(e) => setTask(e.target.value)} />
       <button onClick={addTask}>Add Task</button>
       <ul>
