@@ -1,6 +1,6 @@
 # client/Dockerfile
 # build stage
-FROM node:18-alpine as build
+FROM node:18-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -10,7 +10,10 @@ COPY . .
 # USER nodejs
 RUN chown -R node:node /app
 USER node
-RUN npm run build
+ARG MODE
+ARG VITE_SECRET
+ENV VITE_SECRET $VITE_SECRET
+RUN npm run build -- --mode=${MODE}
 
 # production stage
 FROM nginx:alpine

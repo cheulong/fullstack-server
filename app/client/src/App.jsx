@@ -28,9 +28,11 @@ function App() {
 
   return (
     <>
+      <h1>{import.meta.env.MODE}</h1>
       <h1>Tasks</h1>
-      <p>First name: {'default firstname'} </p>
-      <p>Last name: {'default lastname'}</p>
+      <p>Secret {process.env.VITE_SECRET}</p>
+      <p>First name: {import.meta.env?.VITE_FIRST_NAME || 'default firstname'} </p>
+      <p>Last name: {import.meta.env?.VITE_LAST_NAME || 'default lastname'}</p>
       <input type="text" value={task} onChange={(e) => setTask(e.target.value)} />
       <button onClick={addTask}>Add Task</button>
       <ul>
