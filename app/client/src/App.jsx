@@ -2,12 +2,16 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 function App() {
+  const [hostname, setHostname] = useState("");
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState('');
 
   useEffect(() => {
     fetchTasks();
-    
+    fetch("/hostname") // Assuming React and API are served together
+    .then((res) => res.json())
+    .then((data) => setHostname(data.hostname))
+    .catch((err) => console.error("Error fetching hostname:", err));
   }, []);
 
   const fetchTasks = async () => {
@@ -45,7 +49,7 @@ function App() {
       </ul>
       <p>Hostname: {process.env.VITE_HOSTNAME}</p>
       <p>Node name: {process.env.VITE_MY_NODE_NAME}</p>
-
+      <p>{hostname || "Loading..."}</p>
     </>
   )
 }
