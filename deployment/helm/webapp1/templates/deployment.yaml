@@ -2,23 +2,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-deployment
+  name: {{ .Values.appName }}-deployment
   namespace: default
   labels:
-    app: myapp
+    app: {{ .Values.appName }}
 spec:
   selector:
     matchLabels:
-      app: myapp
+      app: {{ .Values.appName }}
   replicas: 2
   template:
     metadata:
       labels:
-        app: myapp
+        app: {{ .Values.appName }}
     spec:
       containers:
-      - name: myapp
-        image: "cheulong/task-list-app:frontend-0.0.3"
+      - name: {{ .Values.appName }}
+        image: "cheulong/task-list-app:frontend-0.0.4"
+        env:
+          - name: MY_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
         resources:
           limits:
             cpu: 500m
@@ -34,4 +39,4 @@ spec:
       volumes:
         - name: envproduction
           configMap:
-            name: env.production
+            name: {{ .Values.appName }}-production

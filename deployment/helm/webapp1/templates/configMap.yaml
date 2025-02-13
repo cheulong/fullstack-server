@@ -2,9 +2,9 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: env.production
+  name: {{ .Values.appName }}-production
   namespace: default
 data:
   env.production: |
-    VITE_FIRST_NAME=prod firstname1
-    VITE_LAST_NAME=prod lastname1
+    VITE_FIRST_NAME=prod {{ .Values.appName }}
+    VITE_LAST_NAME=prod {{ .Values.appName }}
