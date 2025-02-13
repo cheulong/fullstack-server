@@ -1,0 +1,23 @@
+# https://kubernetes.io/docs/concepts/workloads/pods/
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "myapp"
+  namespace: default
+  labels:
+    app: "myapp"
+spec:
+  containers:
+  - name: myapp
+    image: "cheulong/task-list-app:frontend-0.0.3"
+    resources:
+      limits:
+        cpu: 500m
+        memory: 50Mi
+      requests:
+        cpu: 100m
+        memory: 10Mi
+    ports:
+    - containerPort: 80
+      name: http
+  restartPolicy: Always
