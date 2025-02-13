@@ -43,8 +43,8 @@ function App() {
           </li>
         ))}
       </ul>
-      <p>Hostname {process.env.HOSTNAME}</p>
-      <p>Node name {process.env.MY_NODE_NAME}</p>
+      <p>Hostname: {process.env.VITE_HOSTNAME}</p>
+      <p>Node name: {process.env.VITE_MY_NODE_NAME}</p>
 
     </>
   )

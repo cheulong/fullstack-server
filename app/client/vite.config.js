@@ -8,6 +8,9 @@ export default defineConfig(({ command, mode }) => {
   return {
     define: {
       'process.env.VITE_SECRET': JSON.stringify(env.VITE_SECRET),
+      'process.env.VITE_MY_NODE_NAME': JSON.stringify(env.VITE_MY_NODE_NAME),
+      'process.env.VITE_HOSTNAME': JSON.stringify(env.VITE_HOSTNAME),
+      __APP_ENV__: JSON.stringify(env.APP_ENV),
     },
     plugins: [react()],
     preview: {

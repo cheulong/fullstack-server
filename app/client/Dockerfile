@@ -11,8 +11,6 @@ COPY . .
 RUN chown -R node:node /app
 USER node
 ARG MODE
-ARG VITE_SECRET
-ENV VITE_SECRET $VITE_SECRET
 RUN npm run build -- --mode=${MODE}
 
 # production stage

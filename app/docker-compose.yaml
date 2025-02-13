@@ -19,15 +19,15 @@ services:
     depends_on:
       - mongo
   client:
-    env_file:
-    - staging.env
+    environment:
+      - VITE_MY_NODE_NAME=worker-node-01
+      - VITE_HOSTNAME=myapp-deployment-5bb489b479-sbrms
     build: 
       context: ./client
       # for local development
       # dockerfile: dev.Dockerfile
       args:
-        MODE: staging
-        VITE_SECRET: ${VITE_SECRET}:-default
+        MODE: production
     volumes:
       - ./client:/app
       - /app/node_modules
